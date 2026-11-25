@@ -1,0 +1,56 @@
+
+# ==========================================
+# PrintSync - Git Ignore Configuration
+# ==========================================
+
+# Python virtual environment
+.venv/
+venv/
+env/
+
+# Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Testing and coverage files
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# SQLite database files
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Visual Studio Code settings
+.vscode/
+
+# IDE configuration
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python build and distribution files
+build/
+dist/
+*.egg-info/
+
+# Temporary files and logs
+*.log
+*.tmp
+*.temp
+*.bak

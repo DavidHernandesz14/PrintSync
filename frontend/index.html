@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>PrintSync | Printer Dashboard</title>
+    <link rel="stylesheet" href="/frontend/style.css">
+    <script src="/frontend/script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <div>
+                <h1>PrintSync</h1>
+                <p>3D Printer Management System</p>
+            </div>
+
+            <span id="connection-status" class="connection">
+                Connecting...
+            </span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <div>
+                <h2>Printer Dashboard</h2>
+                <p>
+                    Monitor your printer fleet and manage
+                    print jobs using Shortest Job First.
+                </p>
+            </div>
+
+            <span class="algorithm-badge">
+                SJF Scheduling
+            </span>
+        </section>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <p>Total Printers</p>
+                <h3 id="total-printers">0</h3>
+            </div>
+
+            <div class="stat-card">
+                <p>Active Printers</p>
+                <h3 id="active-printers">0</h3>
+            </div>
+
+            <div class="stat-card">
+                <p>Queued Jobs</p>
+                <h3 id="queued-jobs">0</h3>
+            </div>
+
+            <div class="stat-card">
+                <p>Completed Jobs</p>
+                <h3 id="completed-count">0</h3>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="section-heading">
+                <div>
+                    <h2>Printer Fleet</h2>
+                    <p>Live printer status and progress</p>
+                </div>
+
+                <span class="live-label">Live Updates</span>
+            </div>
+
+            <div id="printer-grid" class="printer-grid">
+                <p class="empty-message">Loading printers...</p>
+            </div>
+        </section>
+
+        <div class="management-grid">
+            <section class="panel">
+                <div class="section-heading">
+                    <div>
+                        <h2>Submit Print Job</h2>
+                        <p>Add a job to the scheduling queue</p>
+                    </div>
+                </div>
+
+                <form id="job-form">
+                    <label for="job-name">Job Name</label>
+                    <input
+                        type="text"
+                        id="job-name"
+                        placeholder="e.g. Phone Stand"
+                        maxlength="100"
+                        required
+                    >
+
+                    <label for="job-duration">
+                        Estimated Duration (seconds)
+                    </label>
+                    <input
+                        type="number"
+                        id="job-duration"
+                        placeholder="e.g. 10"
+                        min="0.1"
+                        max="3600"
+                        step="0.1"
+                        required
+                    >
+
+                    <button id="submit-button"
+                            class="primary-button"
+                            type="submit">
+                        Add to Queue
+                    </button>
+                </form>
+
+                <p id="form-message"
+                   class="form-message"
+                   role="status"></p>
+            </section>
+
+            <section class="panel">
+                <div class="section-heading">
+                    <div>
+                        <h2>Job Queue</h2>
+                        <p>Shortest jobs are selected first</p>
+                    </div>
+                    <span id="queue-count" class="count-badge">
+                        0 Jobs
+                    </span>
+                </div>
+
+                <div id="queue-list" class="queue-list">
+                    <p class="empty-message">
+                        No jobs waiting.
+                    </p>
+                </div>
+
+                <button id="start-button"
+                        class="start-button"
+                        type="button">
+                    Start SJF Scheduler
+                </button>
+
+                <p id="scheduler-message"
+                   class="form-message"
+                   role="status"></p>
+            </section>
+        </div>
+
+        <section class="panel">
+            <div class="section-heading">
+                <div>
+                    <h2>Completed Jobs</h2>
+                    <p>Printing performance and scheduling metrics</p>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <p>Average Waiting Time</p>
+                    <h3 id="average-wait">0.00s</h3>
+                </div>
+
+                <div class="metric-card">
+                    <p>Average Turnaround Time</p>
+                    <h3 id="average-turnaround">0.00s</h3>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Job</th>
+                            <th>Printer</th>
+                            <th>Duration</th>
+                            <th>Wait</th>
+                            <th>Turnaround</th>
+                        </tr>
+                    </thead>
+                    <tbody id="completed-table">
+                        <tr>
+                            <td colspan="5" class="empty-message">
+                                No completed jobs yet.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        PrintSync | 3D Printer Management System
+    </footer>
+</body>
+</html>
